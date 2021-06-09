@@ -49,12 +49,12 @@ const updateValo = async (req, res) => {
   const rank = (req.body.rank);
   const favoriteagents = (req.body.favoriteagents);
   const role = (req.body.role);
-  const usernameweb = (req.body.usernameweb);
+  const usernameweb = (req.params.usernameweb);
   const getAllRows = `Update valorant set iddantag= $1, rank=$2, favoriteagents=$3, role=$4 where usernameweb=$5 `;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [iddantag, rank, favoriteagents, role, usernameweb] );
+    } = await dbQueries(getAllRows, [iddantag, rank, favoriteagents, role, `${usernameweb}`] );
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
       res.send('no files')
@@ -69,12 +69,12 @@ const updateValo = async (req, res) => {
 }
 
 const deleteValo = async (req, res) => {
-    const usernameweb = (req.body.usernameweb)
+    const usernameweb = (req.params.usernameweb)
   const getAllRows = `delete from valorant  where usernameweb=$1 `;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [usernameweb]) ;
+    } = await dbQueries(getAllRows, [`${usernameweb}`]) ;
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
       res.send('no files')

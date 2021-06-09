@@ -5,7 +5,7 @@ const startDatabase = require('./pool');
 const app = express()
 
 // require('dotenv').config()
-
+ 
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
@@ -18,7 +18,9 @@ const signupRoute = require('./routes/signupRoutes')
 const valoRoute = require('./routes/valoRoutes')
 const MLRoute = require('./routes/MLRoutes')
 const pubgroute = require('./routes/PUBGRoutes')
-const TeamRoute = require('./routes/TeamValoRoutes')
+const TeamValoRoute = require('./routes/TeamValoRoutes')
+const TeamMLRoute = require('./routes/TeamMLRoutes')
+const TeamPUBGRoute = require('./routes/TeamPUBGRoutes')
 
 // start database
 // startDatabase();
@@ -28,12 +30,15 @@ app.use('/signup', signupRoute);
 app.use('/valo', valoRoute);
 app.use('/ML', MLRoute);
 app.use('/PUBG', pubgroute);
-app.use('/team', TeamRoute);
+app.use('/teamValo', TeamValoRoute);
+app.use('/teamML', TeamMLRoute);
+app.use('/teamPUBG', TeamPUBGRoute);
 
 
 
-app.listen(6978, () => {
-    console.log(`Listening at port 6978`)
+
+app.listen(6979, () => {
+    console.log(`Listening at port 6979`)
 })
 
 //comment

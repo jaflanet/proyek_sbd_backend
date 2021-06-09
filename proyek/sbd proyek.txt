@@ -121,3 +121,12 @@ select * from  MobileLegend
 where usernameweb = 'Aidan';
 
 {"username":"cora29", "role": "Support", "Rank": "Ace", "usernameweb": "Daffa"}
+
+select * from pengguna full outer join valorant on pengguna.username= valorant.usernameweb;
+
+select usernameml from teamml
+where onlinetime= 'Night' and usernameml is not null
+except select usernameml from teamml
+where username = 'Aidan';
+
+
