@@ -1,0 +1,123 @@
+create type GenderType as enum
+('Male', 'Female');
+
+create type RegionType as enum
+('North America', 'South America', ' Central America', 'Caribbean', 'Central & South Asia', 'Northeastern Asia',
+'Australia & Oceania', 'Noerthern Europe', 'Southern Europe', 'Eastern Europe', 'Western Europe', 'Middle East', 'Nortern Africa',
+'Southern Africa');
+
+create type OnlineType as enum
+('Morning', 'Afternoon', 'Evening', 'Night');
+
+create type RankValoType as enum
+('Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Immortal', 'Radiant');
+
+create type RoleValoType as enum
+('Duelist', 'Controller', 'Initiator', 'Sentinel');
+
+create type Agentstype as enum
+('Astra', 'Breach', 'Brimstone', 'Cypher', 'Jett', 'Killjoy', 'Omen', 'Phoenix', 'Raze',
+'Reyna', 'Sage', 'Skye', 'Sova', 'Viper', 'Yoru');
+
+create type RankPUBGType as enum
+('Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Crown', 'Ace', 'Conqueror');
+
+create type RolePUBGtype as enum
+('Rusher', 'Scout', 'Sniper', 'Support');
+
+create type RankMLType as enum
+('Warrior', 'Elite', 'Master', 'Grandmaster', 'Epic', 'Legend', 'Mythic', 'Mythical Glory');
+
+create type RoleMLType as enum
+('Assasin',  'Fighter', 'Mage', 'Marksman', 'Support', 'Tank');
+
+create type GameType as enum
+('PUBG', 'Valorant', 'Mobile Legend');
+
+create table pengguna(
+Username varchar(16) primary key not null unique, 
+Password varchar(16) not null, 
+Age int not null,
+Gender GenderType not null, 
+Region RegionType not null,
+OnlineTime OnlineType not null 
+);
+
+
+
+create table valorant(
+IDdantag varchar(24) primary key not null unique,
+Rank RankValoType not null,
+FavoriteAgents AgentsType not null,
+Role RoleValotype not null, 
+usernameWeb varchar(16),
+   CONSTRAINT fkkk
+      FOREIGN KEY(usernameWeb) 
+	  REFERENCES pengguna(username));
+
+create table PUBG(
+Usernamepubg varchar(16) primary key not null unique,
+Role RolePUBGtype not null,
+Rank RankPUBGType not null,
+usernameWeb varchar(16),
+   CONSTRAINT fkkk
+      FOREIGN KEY(usernameWeb) 
+	  REFERENCES pengguna(username));
+
+create table MobileLegend(
+ID int primary key not null unique,
+Usernameml varchar(16) not null,
+Role RoleMLType not null,
+Rank RankMLType not null,
+usernameWeb varchar(16),
+   CONSTRAINT fkkk
+      FOREIGN KEY(usernameWeb) 
+	  REFERENCES pengguna(username));
+
+create or replace view teamvalo as
+select * from pengguna full outer join valorant on pengguna.username= valorant.usernameweb;
+
+create or replace view teamml as
+select * from pengguna full outer join MobileLegend on pengguna.username= MobileLegend.usernameweb;
+
+create or replace view teampubg as
+select * from pengguna full outer join pubg on pengguna.username= pubg.usernameweb;
+
+insert into pengguna values ('Aidan', 'uwu15', 20, 'Male', 'Caribbean', 'Morning' );
+insert into pengguna values ('Daffa', 'uwu15', 20, 'Male', 'Caribbean', 'Morning' );
+insert into pengguna values ('Karen', 'uwu15', 20, 'Male', 'Caribbean', 'Afternoon' );
+insert into pengguna values ('Nina', 'uwu15', 20, 'Male', 'Caribbean', 'Afternoon' );
+insert into pengguna values ('Jonathan', 'uwu15', 20, 'Male', 'Caribbean', 'Evening' );
+insert into pengguna values ('Fatma', 'uwu15', 20, 'Male', 'Caribbean', 'Evening' );
+insert into pengguna values ('Putri', 'uwu15', 20, 'Male', 'Caribbean', 'Night' );
+insert into pengguna values ('Faren', 'uwu15', 20, 'Male', 'Caribbean', 'Night' );
+
+insert into pengguna values ('Adi', 'uwu15', 9, 'Male', 'Caribbean', 'Morning' );
+insert into pengguna values ('Satriyo', 'uwu15', 9, 'Male', 'Caribbean', 'Morning' );
+insert into pengguna values ('Pindika', 'uwu15', 9, 'Male', 'Caribbean', 'Afternoon' );
+insert into pengguna values ('Dika', 'uwu15', 9, 'Male', 'Caribbean', 'Afternoon' );
+insert into pengguna values ('Hadi', 'uwu15', 9, 'Male', 'Caribbean', 'Evening' );
+insert into pengguna values ('Ahmad', 'uwu15', 9, 'Male', 'Caribbean', 'Evening' );
+insert into pengguna values ('Fakhri', 'uwu15', 9, 'Male', 'Caribbean', 'Night' );
+insert into pengguna values ('Omar', 'uwu15', 9, 'Male', 'Caribbean', 'Night' );
+
+insert into valorant values ('aidan2929', 'Radiant', 'Jett', 'Controller', 'Aidan');
+insert into pubg values ('Razon12', 'Support', 'Ace', 'Aidan');
+insert into MobileLegend values ('39455874', 'Corazon29', 'Mage', 'Mythic', 'Aidan');
+PAGE PROFILE
+select * from pengguna 
+where username = '(username)';
+
+PAGE Valo
+select * from valorant 
+where usernameweb = '(username)';
+
+PAGE PUBG
+select * from PUBG 
+where usernameweb = 'Aidan';
+
+PAGE ML
+select * from  MobileLegend
+where usernameweb = 'Aidan';
+
+{"username":"cora29", "role": "Support", "Rank": "Ace", "usernameweb": "Daffa"}
