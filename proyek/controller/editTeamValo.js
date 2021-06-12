@@ -5,17 +5,18 @@ const Teammate = async (req, res) => {
 
 //   const age = (req.body.age);
   const onlinetime = (req.body.onlinetime);
-  const username = (req.params.username);
+  const rank = (req.body.rank);
+  const usernameweb = (req.body.usernameweb);
 //   const iddantag = (req.body.iddantag);
   
   const getAllRows = `select iddantag from teamvalo
-                      where onlinetime= $1 and iddantag is not null
+                      where onlinetime= $1 and rank= $2 and iddantag is not null
                       except select iddantag from teamvalo
-                      where username = $2`;
+                      where usernameweb = $3 limit 4`;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows,  [onlinetime, `${username}`]);
+    } = await dbQueries(getAllRows,  [onlinetime, rank, usernameweb]);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
       res.send(dbResponse)
@@ -37,7 +38,7 @@ const getTeam = async (req, res) => {
     } = await dbQueries(getAllRows);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {

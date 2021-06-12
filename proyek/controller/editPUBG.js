@@ -24,15 +24,15 @@ const masukPUBG = async (req, res) => {
   const username = (req.body.usernamepubg);
   const role = (req.body.role);
   const rank = (req.body.rank);
-  const usernameweb = (req.params.usernameweb);
+  const usernameweb = (req.body.usernameweb);
   const getAllRows = `INSERT INTO PUBG (usernamepubg, role, rank, usernameweb) VALUES ($1, $2, $3, $4)`;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [usernamepubg, role, rank, `${usernameweb}`]);
+    } = await dbQueries(getAllRows, [usernamepubg, role, rank, usernameweb]);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {
@@ -47,15 +47,15 @@ const updatePUBG = async (req, res) => {
   const username = (req.body.username);
   const role = (req.body.role);
   const rank = (req.body.rank);
-  const usernameweb = (req.params.usernameweb);
+  const usernameweb = (req.body.usernameweb);
   const getAllRows = `Update PUBG set username=$1, role=$2, rank=$3 where usernameweb=$4 `;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [username, role, rank, `${usernameweb}`] );
+    } = await dbQueries(getAllRows, [username, role, rank, usernameweb] );
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {
@@ -67,15 +67,15 @@ const updatePUBG = async (req, res) => {
 }
 
 const deletePUBG = async (req, res) => {
-    const usernameweb = (req.params.usernameweb)
+    const usernameweb = (req.body.usernameweb)
   const getAllRows = `delete from PUBG  where usernameweb=$1 `;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [`${usernameweb}`]) ;
+    } = await dbQueries(getAllRows, [usernameweb]) ;
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {

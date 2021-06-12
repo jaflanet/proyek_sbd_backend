@@ -4,17 +4,19 @@ const dbQueries = require('../Queries.js');
 const TeammatePUBG = async (req, res) => {
 //   const age = (req.body.age);
   const onlinetime = (req.body.onlinetime);
-  const username = (req.params.username);
+  const rank = (req.body.rank);
+  const usernameweb = (req.body.usernameweb);
 //   const usernameml = (req.body.usernameml);
   
   const getAllRows = `select usernamepubg from teampubg
-                      where onlinetime= $1 and usernamepubg is not null
+                      where onlinetime= $1 and rank= $2 and usernamepubg is not null
                       except select usernamepubg from teampubg
-                      where username = $2`;
-  try {
+                      where usernameweb= $3 limit 4`;
+ 
+try {
     const {
       rows
-    } = await dbQueries(getAllRows,  [onlinetime, `${username}`]);
+    } = await dbQueries(getAllRows,  [onlinetime, rank, usernameweb]);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
       res.send(dbResponse)
@@ -36,7 +38,7 @@ const getTeamPUBG = async (req, res) => {
     } = await dbQueries(getAllRows);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {

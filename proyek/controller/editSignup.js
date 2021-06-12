@@ -17,7 +17,7 @@ const Signup = async (req, res) => {
     } = await dbQueries(getAllRows, [username, password, age, gender, region, onlinetime]);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {
@@ -36,7 +36,7 @@ const getSignup = async (req, res) => {
     } = await dbQueries(getAllRows);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {

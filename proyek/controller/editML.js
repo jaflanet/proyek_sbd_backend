@@ -9,7 +9,7 @@ const getML = async (req, res) => {
       } = await dbQueries(getAllRows);
       const dbResponse = rows;
       if (dbResponse[0] === undefined) {
-        res.send('no files')
+        res.send('Sukses')
       }
       res.send(dbResponse)
     } catch (error) {
@@ -25,15 +25,15 @@ const masukML = async (req, res) => {
   const usernameml = (req.body.usernameml);
   const role = (req.body.role);
   const rank = (req.body.rank);
-  const usernameweb = (req.params.usernameweb);
+  const usernameweb = (req.body.usernameweb);
   const getAllRows = `INSERT INTO MobileLegend (id, usernameml, role, rank, usernameweb) VALUES ($1, $2, $3, $4, $5)`;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [id, usernameml, role, rank, `${usernameweb}`]);
+    } = await dbQueries(getAllRows, [id, usernameml, role, rank, usernameweb]);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {
@@ -49,15 +49,15 @@ const updateML = async (req, res) => {
   const usernameml = (req.body.usernameml);
   const role = (req.body.role);
   const rank = (req.body.rank);
-  const usernameweb = (req.params.usernameweb);
+  const usernameweb = (req.body.usernameweb);
   const getAllRows = `Update MobileLegend set id= $1, usernameml=$2, role=$3, rank=$4 where usernameweb=$5 `;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [id, usernameml, role, rank, `${usernameweb}`] );
+    } = await dbQueries(getAllRows, [id, usernameml, role, rank, usernameweb] );
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {
@@ -69,15 +69,15 @@ const updateML = async (req, res) => {
 }
 
 const deleteML = async (req, res) => {
-    const usernameweb = (req.params.usernameweb)
+    const usernameweb = (req.body.usernameweb)
   const getAllRows = `delete from MobileLegend  where usernameweb=$1 `;
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [`${usernameweb}`]) ;
+    } = await dbQueries(getAllRows, [usernameweb]) ;
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      res.send('no files')
+      res.send('Sukses')
     }
     res.send(dbResponse)
   } catch (error) {
