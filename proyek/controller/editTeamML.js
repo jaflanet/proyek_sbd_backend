@@ -6,10 +6,10 @@ const onlinetime = (req.body.onlinetime);
 const rank = (req.body.rank);
 const usernameweb = (req.body.usernameweb);
 
-const getAllRows = `select id from teamml
+const getAllRows = `select id, role, rank from teamml
                     where onlinetime= $1 and rank= $2 and id is not null
                     except select id from teamml
-                    where usernameweb= $3 limit 4`;
+                    where usernameweb= $3 limit 5`;
   try {
     const {
       rows
