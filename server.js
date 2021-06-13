@@ -41,7 +41,7 @@ app.use('/teamPUBG', TeamPUBGRoute);
 
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Listening at port ${process.env.PORT}")
+  console.log(`Listening at port ${process.env.PORT}`)
 })
 
 // app.listen(6970, () => {
