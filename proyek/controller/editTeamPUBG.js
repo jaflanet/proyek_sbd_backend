@@ -8,7 +8,7 @@ const TeammatePUBG = async (req, res) => {
   const usernameweb = (req.body.usernameweb);
 //   const usernameml = (req.body.usernameml);
   
-  const getAllRows = `select usernamepubg from teampubg
+  const getAllRows = `select usernamepubg, role, rank from teampubg
                       where onlinetime= $1 and rank= $2 and usernamepubg is not null
                       except select usernamepubg from teampubg
                       where usernameweb= $3 limit 4`;

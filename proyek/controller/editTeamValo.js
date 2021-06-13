@@ -9,10 +9,10 @@ const Teammate = async (req, res) => {
   const usernameweb = (req.body.usernameweb);
 //   const iddantag = (req.body.iddantag);
   
-  const getAllRows = `select iddantag from teamvalo
+  const getAllRows = `select iddantag, rank, favoriteagents, role from teamvalo
                       where onlinetime= $1 and rank= $2 and iddantag is not null
                       except select iddantag from teamvalo
-                      where usernameweb = $3 limit 4`;
+                      where usernameweb = $3 limit 5`;
   try {
     const {
       rows
