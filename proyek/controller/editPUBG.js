@@ -21,7 +21,7 @@ const getPUBG = async (req, res) => {
   }
 
 const masukPUBG = async (req, res) => {
-  const username = (req.body.usernamepubg);
+  const usernamepubg = (req.body.usernamepubg);
   const role = (req.body.role);
   const rank = (req.body.rank);
   const usernameweb = (req.body.usernameweb);
