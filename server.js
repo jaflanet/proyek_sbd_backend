@@ -40,10 +40,12 @@ app.use('/teamML', TeamMLRoute);
 app.use('/teamPUBG', TeamPUBGRoute);
 
 
-
-
-app.listen(6970, () => {
-    console.log(`Listening at port 6970`)
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Listening at port ${process.env.PORT}")
 })
+
+// app.listen(6970, () => {
+//     console.log(`Listening at port 6970`)
+// })
 
 //comment
