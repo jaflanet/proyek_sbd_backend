@@ -4,6 +4,7 @@ const logger = require('morgan')
 const startDatabase = require('./proyek/pool');
 const app = express()
 var cors = require('cors')
+require('dotenv').config()
 
 
 // require('dotenv').config()
