@@ -1,7 +1,7 @@
 const express = require ('express')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
-const startDatabase = require('./pool');
+const startDatabase = require('./proyek/pool');
 const app = express()
 var cors = require('cors')
 
