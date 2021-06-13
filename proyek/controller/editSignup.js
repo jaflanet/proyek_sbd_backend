@@ -3,14 +3,13 @@ const dbQueries = require('../Queries.js');
 
 const Signup = async (req, res) => {
   const username = (req.body.username);
-  const password = (req.body.password);
   const age = (req.body.age);
   const gender = (req.body.gender);
   const region = (req.body.region);
   // const games = (req.body.games);
   const onlinetime = (req.body.onlinetime);
   
-  const getAllRows = `INSERT INTO PENGGUNA (username, password, age, gender, region, onlinetime) VALUES ($1, $2, $3, $4, $5, $6)`;
+  const getAllRows = `INSERT INTO PENGGUNA (username, age, gender, region, onlinetime) VALUES ($1, $2, $3, $4, $5)`;
   try {
     const {
       rows
