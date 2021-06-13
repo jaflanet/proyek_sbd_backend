@@ -16,14 +16,14 @@ app.use(
 
 
 // export routing
-const signupRoute = require('./routes/signupRoutes')
-const valoRoute = require('./routes/valoRoutes')
-const MLRoute = require('./routes/MLRoutes')
-const pubgroute = require('./routes/PUBGRoutes')
-const TeamValoRoute = require('./routes/TeamValoRoutes')
-const TeamMLRoute = require('./routes/TeamMLRoutes')
-const TeamPUBGRoute = require('./routes/TeamPUBGRoutes')
-const loginRoute = require('./routes/loginRoutes')
+const signupRoute = require('./proyek/routes/signupRoutes')
+const valoRoute = require('./proyek/routes/valoRoutes')
+const MLRoute = require('./proyek/routes/MLRoutes')
+const pubgroute = require('./proyek/routes/PUBGRoutes')
+const TeamValoRoute = require('./proyek/routes/TeamValoRoutes')
+const TeamMLRoute = require('./proyek/routes/TeamMLRoutes')
+const TeamPUBGRoute = require('./proyek/routes/TeamPUBGRoutes')
+const loginRoute = require('./proyek/routes/loginRoutes')
 
 // start database
 // startDatabase();
