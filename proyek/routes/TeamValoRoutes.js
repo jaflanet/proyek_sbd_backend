@@ -1,7 +1,7 @@
 const router = require('express').Router()
-const controller = require('../controller/editTeamValo.js')
+const controller = require('../controller/editTeamValo')
 
-router.get('/', controller.Teammate);
+router.get('/', controller.getTeam);
 // router.post('/', controller.Teammate);
 
 
