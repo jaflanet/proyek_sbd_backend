@@ -13,7 +13,7 @@ const Signup = async (req, res) => {
   try {
     const {
       rows
-    } = await dbQueries(getAllRows, [username, password, age, gender, region, onlinetime]);
+    } = await dbQueries(getAllRows, [username, age, gender, region, onlinetime]);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
       res.send('Sukses')
